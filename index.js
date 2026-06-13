@@ -12,7 +12,7 @@ const path = require('path');
 
 const app = express();
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 dotENV.config();
 mongoose.connect(process.env.MONGO_URI)
@@ -29,6 +29,6 @@ app.listen(PORT, ()=>{
     console.log(`Server is running on port ${PORT}`);
 });
 
-app.use('/home',(req,res)=>{
+app.use('/',(req,res)=>{
     res.send("Welcome to Home Page");
   });
